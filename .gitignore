@@ -1,0 +1,13 @@
+# ignore file system
+.DS_Store
+
+# ignore generate dir
+/gen
+/bin
+
+local.properties
+
+# ignore eclipse file
+.classpath
+.project
+.settings/
