@@ -2,8 +2,8 @@
 .DS_Store
 
 # ignore generate dir
-/gen
-/bin
+gen/
+bin/
 
 local.properties
 

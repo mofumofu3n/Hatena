@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hatena</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="title_popular">人気</string>
+    <string name="title_hot">総合</string>
+    <string name="title_social">世の中</string>
+    <string name="title_economics">政治と経済</string>
+    <string name="title_life">暮らし</string>
+    <string name="title_knowledge">学び</string>
+    <string name="title_it">テクノロジー</string>
+    <string name="title_entertainment">エンタメ</string>
+    <string name="title_game">アニメとゲーム</string>
+    <string name="title_fun">おもしろ</string>
+
+
+</resources>
