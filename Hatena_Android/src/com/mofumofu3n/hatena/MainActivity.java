@@ -1,8 +1,5 @@
 package com.mofumofu3n.hatena;
 
-import com.mofumofu3n.hatena.economics.EconomicsFragment;
-import com.mofumofu3n.hatena.hot.HotFragment;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -11,6 +8,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.mofumofu3n.hatena.hot.HotFragment;
 
 public class MainActivity extends FragmentActivity {
 
@@ -29,7 +28,7 @@ public class MainActivity extends FragmentActivity {
 		mSlidingLayout.openPane();
 
 		getSupportFragmentManager().beginTransaction()
-				.add(R.id.pane1, new SlideMenuFragment(), "pane1").commit();
+				.add(R.id.pane1, new SlideMenuFragment(this), "pane1").commit();
 		getSupportFragmentManager().beginTransaction()
 				.add(R.id.pane2, new HotFragment(), "pane2").commit();
 
