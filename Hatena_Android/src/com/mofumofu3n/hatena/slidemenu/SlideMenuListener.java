@@ -1,15 +1,16 @@
-package com.mofumofu3n.hatena;
+package com.mofumofu3n.hatena.slidemenu;
 
 import android.app.ActionBar;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SlidingPaneLayout.SimplePanelSlideListener;
 import android.view.View;
 
-public class SlideListener extends SimplePanelSlideListener {
+public class SlideMenuListener extends SimplePanelSlideListener {
+	@SuppressWarnings("unused")
 	private final FragmentActivity mFragmentActivity;
 	private final ActionBar mActionBar;
 
-	public SlideListener(FragmentActivity fragmentActivity) {
+	public SlideMenuListener(FragmentActivity fragmentActivity) {
 		mFragmentActivity = fragmentActivity;
 		mActionBar = fragmentActivity.getActionBar();
 	}

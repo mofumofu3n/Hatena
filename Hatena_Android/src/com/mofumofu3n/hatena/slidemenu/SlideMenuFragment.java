@@ -1,6 +1,4 @@
-package com.mofumofu3n.hatena;
-
-import java.util.HashMap;
+package com.mofumofu3n.hatena.slidemenu;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.mofumofu3n.hatena.MainActivity;
 import com.mofumofu3n.hatena.fun.FunFragment;
 
 public class SlideMenuFragment extends ListFragment {
@@ -38,7 +37,7 @@ public class SlideMenuFragment extends ListFragment {
 		onItemSelected(position);
 	}
 
-	void onItemSelected(int position) {
+	private void onItemSelected(int position) {
 		final FragmentTransaction transaction = getActivity()
 				.getSupportFragmentManager().beginTransaction();
 		transaction.replace(mActivity.getMainFragmentId(), new FunFragment(),

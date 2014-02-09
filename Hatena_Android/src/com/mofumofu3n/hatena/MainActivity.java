@@ -10,9 +10,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.mofumofu3n.hatena.hot.HotFragment;
+import com.mofumofu3n.hatena.slidemenu.SlideMenuFragment;
+import com.mofumofu3n.hatena.slidemenu.SlideMenuListener;
 
 public class MainActivity extends FragmentActivity {
-
 	CategoryPagerAdapter mCategoryPagerAdapter;
 	ViewPager mViewPager;
 
@@ -24,13 +25,13 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.activity_main2);
 
 		mSlidingLayout = (SlidingPaneLayout) findViewById(R.id.pane);
-		mSlidingLayout.setPanelSlideListener(new SlideListener(this));
+		mSlidingLayout.setPanelSlideListener(new SlideMenuListener(this));
 		mSlidingLayout.openPane();
 
 		getSupportFragmentManager().beginTransaction()
-				.add(R.id.pane1, new SlideMenuFragment(this), "pane1").commit();
+				.add(getSlidingMenuId(), new SlideMenuFragment(this), "pane1").commit();
 		getSupportFragmentManager().beginTransaction()
-				.add(R.id.pane2, new HotFragment(), "pane2").commit();
+				.add(getMainFragmentId(), new HotFragment(), "pane2").commit();
 
 		// setContentView(R.layout.activity_main);
 		//
@@ -68,11 +69,11 @@ public class MainActivity extends FragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	int getSlidingMenuId() {
+	public int getSlidingMenuId() {
 		return R.id.pane1;
 	}
 
-	int getMainFragmentId() {
+	public int getMainFragmentId() {
 		return R.id.pane2;
 	}
 	
