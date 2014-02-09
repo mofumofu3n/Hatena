@@ -67,5 +67,13 @@ public class MainActivity extends FragmentActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	int getSlidingMenuId() {
+		return R.id.pane1;
+	}
 
+	int getMainFragmentId() {
+		return R.id.pane2;
+	}
+	
 }
