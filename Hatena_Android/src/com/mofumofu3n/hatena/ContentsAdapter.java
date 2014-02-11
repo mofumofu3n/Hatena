@@ -71,7 +71,6 @@ public class ContentsAdapter extends ArrayAdapter<Entry> {
 		return convertView;
 	}
 
-
 	static class ViewHolder {
 		TextView title;
 		TextView description;

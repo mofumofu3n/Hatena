@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response.ErrorListener;
@@ -30,6 +31,7 @@ public class ContentsFragment extends Fragment {
 	private RequestQueue mQueue;
 	private final XmlArrayRequest mRequest;
 	private ContentsAdapter mAdapter;
+	private ListView mContentListView;
 	private ArrayList<Entry> mEntryList = new ArrayList<Entry>();
 
 	public ContentsFragment(String url) {
@@ -40,6 +42,7 @@ public class ContentsFragment extends Fragment {
 			public void onResponse(InputStream response) {
 				mEntryList.addAll(RssParser.parse(response));
 				mAdapter.notifyDataSetChanged();
+				mProgress.setVisibility(View.GONE);
 			}
 		}, new ErrorListener() {
 
@@ -55,7 +58,6 @@ public class ContentsFragment extends Fragment {
 		super.onAttach(activity);
 
 		mQueue = Volley.newRequestQueue(activity);
-		mQueue.add(mRequest);
 	}
 
 	@Override
@@ -63,11 +65,18 @@ public class ContentsFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 
 		mAdapter = new ContentsAdapter(getActivity(), mEntryList, mQueue);
-		ListView contentListView = (ListView) getView().findViewById(R.id.content_list);
-		contentListView.setAdapter(mAdapter);
-		contentListView.setOnItemClickListener(mItemClick);
+		mContentListView = (ListView) getView().findViewById(R.id.content_list);
+		mContentListView.setAdapter(mAdapter);
+		mContentListView.setOnItemClickListener(mItemClick);
+
+		mProgress = (ProgressBar) getView().findViewById(R.id.empty_view);
+		mProgress.setVisibility(View.VISIBLE);
+
+		mQueue.add(mRequest);
 	}
 
+	ProgressBar mProgress;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

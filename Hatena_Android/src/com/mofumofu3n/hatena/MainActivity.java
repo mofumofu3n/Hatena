@@ -61,11 +61,19 @@ public class MainActivity extends FragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Optionを押した時のSlidingPanel出し分け
 		if (mSlidingLayout.isOpen()) {
-			mSlidingLayout.closePane();
+			closePane();
 		} else {
-			mSlidingLayout.openPane();
+			openPane();
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void openPane() {
+		mSlidingLayout.openPane();
+	}
+	
+	public void closePane() {
+		mSlidingLayout.closePane();
 	}
 	
 	public int getSlidingMenuId() {
