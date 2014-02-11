@@ -19,11 +19,25 @@ import com.mofumofu3n.hatena.R;
 import com.mofumofu3n.hatena.request.RssParser;
 import com.mofumofu3n.hatena.request.XmlArrayRequest;
 
-public class HotFragment extends Fragment {
-	private static final String TAG = HotFragment.class.getSimpleName();
-	private static final String URL = "http://b.hatena.ne.jp/entrylist/social?sort=hot&threshold=&mode=rss";
+public class ContentsFragment extends Fragment {
+	private static final String TAG = ContentsFragment.class.getSimpleName();
+	private final XmlArrayRequest mRequest;
 
-	public HotFragment() {
+	public ContentsFragment(String url) {
+
+		mRequest = new XmlArrayRequest(url, new Listener<InputStream>() {
+
+			@Override
+			public void onResponse(InputStream response) {
+				RssParser.parse(response);
+			}
+		}, new ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Log.d(TAG, "Error :" + error.getMessage());
+			}
+		});
 	}
 
 	@Override
@@ -42,20 +56,5 @@ public class HotFragment extends Fragment {
 
 		return rootView;
 	}
-
-	private final XmlArrayRequest mRequest = new XmlArrayRequest(URL,
-			new Listener<InputStream>() {
-
-				@Override
-				public void onResponse(InputStream response) {
-					RssParser.parse(response);
-				}
-			}, new ErrorListener() {
-
-				@Override
-				public void onErrorResponse(VolleyError error) {
-					Log.d(TAG, "Error :" + error.getMessage());
-				}
-			});
 
 }

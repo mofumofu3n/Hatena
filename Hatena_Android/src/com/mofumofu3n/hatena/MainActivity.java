@@ -9,7 +9,7 @@ import android.support.v4.widget.SlidingPaneLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.mofumofu3n.hatena.hot.HotFragment;
+import com.mofumofu3n.hatena.hot.ContentsFragment;
 import com.mofumofu3n.hatena.slidemenu.SlideMenuFragment;
 import com.mofumofu3n.hatena.slidemenu.SlideMenuListener;
 
@@ -31,7 +31,7 @@ public class MainActivity extends FragmentActivity {
 		getSupportFragmentManager().beginTransaction()
 				.add(getSlidingMenuId(), new SlideMenuFragment(this), "pane1").commit();
 		getSupportFragmentManager().beginTransaction()
-				.add(getMainFragmentId(), new HotFragment(), "pane2").commit();
+				.add(getMainFragmentId(), new ContentsFragment(Config.RSS_GAME), "pane2").commit();
 
 		// setContentView(R.layout.activity_main);
 		//

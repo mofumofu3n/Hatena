@@ -9,7 +9,7 @@ import com.mofumofu3n.hatena.economics.EconomicsFragment;
 import com.mofumofu3n.hatena.entertainment.EntertainmentFragment;
 import com.mofumofu3n.hatena.fun.FunFragment;
 import com.mofumofu3n.hatena.game.GameFragment;
-import com.mofumofu3n.hatena.hot.HotFragment;
+import com.mofumofu3n.hatena.hot.ContentsFragment;
 import com.mofumofu3n.hatena.it.ItFragment;
 import com.mofumofu3n.hatena.knowledge.KnowledgeFragment;
 import com.mofumofu3n.hatena.life.LifeFragment;
@@ -27,26 +27,26 @@ public class CategoryPagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public Fragment getItem(int position) {
 		switch (position) {
-		case 0:
-			return new PopularFragment();
-		case 1:
-			return new HotFragment();
-		case 2:
-			return new SocialFragment();
-		case 3:
-			return new EconomicsFragment();
-		case 4:
-			return new LifeFragment();
-		case 5:
-			return new KnowledgeFragment();
-		case 6:
-			return new ItFragment();
-		case 7:
-			return new EntertainmentFragment();
-		case 8:
-			return new GameFragment();
-		case 9:
-			return new FunFragment();
+//		case 0:
+//			return new PopularFragment();
+//		case 1:
+//			return new ContentsFragment();
+//		case 2:
+//			return new SocialFragment();
+//		case 3:
+//			return new EconomicsFragment();
+//		case 4:
+//			return new LifeFragment();
+//		case 5:
+//			return new KnowledgeFragment();
+//		case 6:
+//			return new ItFragment();
+//		case 7:
+//			return new EntertainmentFragment();
+//		case 8:
+//			return new GameFragment();
+//		case 9:
+//			return new FunFragment();
 		}
 		return null;
 	}

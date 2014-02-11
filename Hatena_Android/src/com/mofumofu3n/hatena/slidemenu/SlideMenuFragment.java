@@ -7,13 +7,14 @@ import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ListView;
 
+import com.mofumofu3n.hatena.Config;
 import com.mofumofu3n.hatena.MainActivity;
 import com.mofumofu3n.hatena.R;
 import com.mofumofu3n.hatena.economics.EconomicsFragment;
 import com.mofumofu3n.hatena.entertainment.EntertainmentFragment;
 import com.mofumofu3n.hatena.fun.FunFragment;
 import com.mofumofu3n.hatena.game.GameFragment;
-import com.mofumofu3n.hatena.hot.HotFragment;
+import com.mofumofu3n.hatena.hot.ContentsFragment;
 import com.mofumofu3n.hatena.it.ItFragment;
 import com.mofumofu3n.hatena.knowledge.KnowledgeFragment;
 import com.mofumofu3n.hatena.life.LifeFragment;
@@ -58,25 +59,25 @@ public class SlideMenuFragment extends ListFragment {
 	private Fragment selectedFragment(int position) {
 		switch (position) {
 		case 0:
-			return new HotFragment();
+			return new ContentsFragment(Config.RSS_SOCIAL);
 		case 1:
-			return new PopularFragment();
+			return new ContentsFragment(Config.RSS_SOCIAL);
 		case 2:
-			return new SocialFragment();
+			return new ContentsFragment(Config.RSS_SOCIAL);
 		case 3:
-			return new EconomicsFragment();
+			return new ContentsFragment(Config.RSS_ECONOMICS);
 		case 4:
-			return new LifeFragment();
+			return new ContentsFragment(Config.RSS_LIFE);
 		case 5:
-			return new KnowledgeFragment();
+			return new ContentsFragment(Config.RSS_KNOWLEDGE);
 		case 6:
-			return new ItFragment();
+			return new ContentsFragment(Config.RSS_IT);
 		case 7:
-			return new EntertainmentFragment();
+			return new ContentsFragment(Config.RSS_ENTERTAINMENT);
 		case 8:
-			return new GameFragment();
+			return new ContentsFragment(Config.RSS_GAME);
 		case 9:
-			return new FunFragment();
+			return new ContentsFragment(Config.RSS_FUN);
 		}
 		return null;
 	}
