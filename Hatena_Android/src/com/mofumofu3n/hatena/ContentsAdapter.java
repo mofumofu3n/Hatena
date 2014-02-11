@@ -22,7 +22,8 @@ public class ContentsAdapter extends ArrayAdapter<Entry> {
 	private ImageLoader mImageLoader;
 	private LayoutInflater mInflater;
 
-	public ContentsAdapter(Context context, ArrayList<Entry> objects, RequestQueue queue) {
+	public ContentsAdapter(Context context, ArrayList<Entry> objects,
+			RequestQueue queue) {
 		super(context, 0, objects);
 
 		mInflater = (LayoutInflater) context
@@ -42,6 +43,8 @@ public class ContentsAdapter extends ArrayAdapter<Entry> {
 			holder = new ViewHolder();
 			holder.title = (TextView) convertView.findViewById(R.id.entry_title);
 			holder.image = (ImageView) convertView.findViewById(R.id.entry_image);
+			holder.favicon = (ImageView) convertView.findViewById(R.id.entry_favicon);
+			holder.description = (TextView) convertView.findViewById(R.id.entry_description);
 
 			convertView.setTag(holder);
 		} else {
@@ -50,6 +53,11 @@ public class ContentsAdapter extends ArrayAdapter<Entry> {
 
 		Entry entry = getItem(position);
 		holder.title.setText(entry.title);
+		holder.description.setText(entry.description);
+		ImageListener faviconListener = ImageLoader.getImageListener(
+				holder.favicon, R.drawable.no_image,
+				android.R.drawable.ic_dialog_alert);
+		mImageLoader.get(entry.favicon, faviconListener);
 
 		if (entry.image != null) {
 			holder.image.setVisibility(View.VISIBLE);
@@ -62,6 +70,7 @@ public class ContentsAdapter extends ArrayAdapter<Entry> {
 		}
 		return convertView;
 	}
+
 
 	static class ViewHolder {
 		TextView title;

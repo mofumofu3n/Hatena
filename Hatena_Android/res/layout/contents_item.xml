@@ -8,20 +8,47 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:background="#70D3D3D3"
-        android:paddingBottom="8dp" >
+        android:padding="8dp" >
+
+        <ImageView
+            android:id="@+id/entry_favicon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/entry_title"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter" />
 
         <TextView
-            android:id="@+id/entry_title"
+            android:id="@id/entry_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp" />
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="6dp"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_toRightOf="@id/entry_favicon" />
+        
+        <TextView
+           	android:id="@+id/entry_description" 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/entry_title"
+            android:layout_marginBottom="6dp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textColor="#60000000"
+			android:textSize="12sp"
+            />
 
         <ImageView
             android:id="@+id/entry_image"
             android:layout_width="150dp"
             android:layout_height="100dp"
+            android:layout_below="@id/entry_description"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:contentDescription="@null"
