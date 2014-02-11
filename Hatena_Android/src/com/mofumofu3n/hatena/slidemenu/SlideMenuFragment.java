@@ -58,9 +58,9 @@ public class SlideMenuFragment extends ListFragment {
 	private Fragment selectedFragment(int position) {
 		switch (position) {
 		case 0:
-			return new PopularFragment();
-		case 1:
 			return new HotFragment();
+		case 1:
+			return new PopularFragment();
 		case 2:
 			return new SocialFragment();
 		case 3:
