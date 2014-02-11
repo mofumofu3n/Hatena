@@ -11,7 +11,7 @@ public class Entry {
 
 	@Override
 	public String toString() {
-		return String.format("Title: %s\nLink: %s\nDescription: %s\nImage: \nFavicon: %s\n", title,
+		return String.format("Title: %s\nLink: %s\nDescription: %s\nImage: %s\nFavicon: %s\n", title,
 				link, description, image, favicon);
 	}
 }
