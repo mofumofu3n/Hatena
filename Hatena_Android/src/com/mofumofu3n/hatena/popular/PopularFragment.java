@@ -19,9 +19,6 @@ public class PopularFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_main_dummy,
 				container, false);
-		TextView dummyTextView = (TextView) rootView
-				.findViewById(R.id.section_label);
-		dummyTextView.setText(R.string.title_popular);
 		return rootView;
 	}
 }
