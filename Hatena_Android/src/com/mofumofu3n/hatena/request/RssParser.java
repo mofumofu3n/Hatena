@@ -75,6 +75,13 @@ public class RssParser {
 						Log.d(TAG, parser.getText());
 					}
 				}
+				
+				if (eventType == XmlPullParser.START_TAG && "encoded".equals(parser.getName())) {
+					eventType = parser.next();
+					if (eventType == XmlPullParser.TEXT) {
+						Log.d(TAG, parser.getText());
+					}
+				}
 
 				if (eventType == XmlPullParser.START_TAG
 						&& "date".equals(parser.getName())) {
