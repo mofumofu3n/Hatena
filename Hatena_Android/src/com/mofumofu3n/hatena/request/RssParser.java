@@ -48,6 +48,7 @@ public class RssParser {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		Log.d(TAG, "return List");
 		return entryList;
 	}
 
@@ -137,7 +138,6 @@ public class RssParser {
 				e.printStackTrace();
 			}
 		}
-		Log.d(TAG, entry.toString());
 		return entry;
 	}
 	
