@@ -21,6 +21,7 @@ import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.mofumofu3n.hatena.R;
+import com.mofumofu3n.hatena.request.RssParser;
 import com.mofumofu3n.hatena.request.XmlArrayRequest;
 
 public class HotFragment extends Fragment {
@@ -35,47 +36,7 @@ public class HotFragment extends Fragment {
 		super.onAttach(activity);
 
 		RequestQueue queue = Volley.newRequestQueue(activity);
-
-		XmlArrayRequest request = new XmlArrayRequest(URL,
-				new Listener<InputStream>() {
-
-					@Override
-					public void onResponse(InputStream response) {
-						Log.d(TAG, "GET REQUEST");
-						XmlPullParser parser = Xml.newPullParser();
-						try {
-							parser.setInput(response, "UTF-8");
-
-							int eventType;
-							while ((eventType = parser.next()) != XmlPullParser.END_DOCUMENT) {
-								// itemタグを見つけたら、addItemsへ
-								if (eventType == XmlPullParser.START_TAG
-										&& "item".equals(parser.getName())) {
-									addItems(parser);
-								}
-							}
-						} catch (XmlPullParserException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-				}, new ErrorListener() {
-
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						Log.d(TAG, "Error :" + error.getMessage());
-					}
-				});
-
-		queue.add(request);
-	}
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		Log.d(TAG, "onCreate");
+		queue.add(mRequest);
 	}
 
 	@Override
@@ -84,70 +45,22 @@ public class HotFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_main_dummy,
 				container, false);
 
-
 		return rootView;
 	}
 
-	/**
-	 * DataStoreクラスにタグを格納
-	 * 
-	 * @param parser
-	 * @return
-	 */
-	private void addItems(XmlPullParser parser) {
+	private final XmlArrayRequest mRequest = new XmlArrayRequest(URL,
+			new Listener<InputStream>() {
 
-		while (true) {
-			try {
-				int eventType = parser.next();
-				if (eventType == XmlPullParser.END_TAG
-						&& "item".equals(parser.getName())) {
-					break;
+				@Override
+				public void onResponse(InputStream response) {
+					RssParser.parse(response);
 				}
+			}, new ErrorListener() {
 
-				if (eventType == XmlPullParser.START_TAG
-						&& "title".equals(parser.getName())) {
-					eventType = parser.next();
-					if (eventType == XmlPullParser.TEXT) {
-						Log.d(TAG, parser.getText());
-					}
+				@Override
+				public void onErrorResponse(VolleyError error) {
+					Log.d(TAG, "Error :" + error.getMessage());
 				}
+			});
 
-				if (eventType == XmlPullParser.START_TAG
-						&& "link".equals(parser.getName())) {
-					eventType = parser.next();
-					if (eventType == XmlPullParser.TEXT) {
-						Log.d(TAG, parser.getText());
-					}
-				}
-
-				if (eventType == XmlPullParser.START_TAG
-						&& "description".equals(parser.getName())) {
-					eventType = parser.next();
-					if (eventType == XmlPullParser.TEXT) {
-						Log.d(TAG, parser.getText());
-					}
-				}
-
-				if (eventType == XmlPullParser.START_TAG
-						&& "date".equals(parser.getName())) {
-					eventType = parser.next();
-					if (eventType == XmlPullParser.TEXT) {
-						Log.d(TAG, parser.getText());
-					}
-				}
-
-				if (eventType == XmlPullParser.START_TAG
-						&& "bookmarkcount".equals(parser.getName())) {
-					eventType = parser.next();
-					if (eventType == XmlPullParser.TEXT) {
-						Log.d(TAG, parser.getText());
-					}
-				}
-			} catch (XmlPullParserException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 }
