@@ -1,4 +1,4 @@
-package com.mofumofu3n.hatena.hot;
+package com.mofumofu3n.hatena;
 
 import java.io.InputStream;
 

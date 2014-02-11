@@ -8,13 +8,13 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.mofumofu3n.hatena.Config;
+import com.mofumofu3n.hatena.ContentsFragment;
 import com.mofumofu3n.hatena.MainActivity;
 import com.mofumofu3n.hatena.R;
 import com.mofumofu3n.hatena.economics.EconomicsFragment;
 import com.mofumofu3n.hatena.entertainment.EntertainmentFragment;
 import com.mofumofu3n.hatena.fun.FunFragment;
 import com.mofumofu3n.hatena.game.GameFragment;
-import com.mofumofu3n.hatena.hot.ContentsFragment;
 import com.mofumofu3n.hatena.it.ItFragment;
 import com.mofumofu3n.hatena.knowledge.KnowledgeFragment;
 import com.mofumofu3n.hatena.life.LifeFragment;

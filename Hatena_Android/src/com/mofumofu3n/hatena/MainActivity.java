@@ -9,7 +9,6 @@ import android.support.v4.widget.SlidingPaneLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.mofumofu3n.hatena.hot.ContentsFragment;
 import com.mofumofu3n.hatena.slidemenu.SlideMenuFragment;
 import com.mofumofu3n.hatena.slidemenu.SlideMenuListener;
 
