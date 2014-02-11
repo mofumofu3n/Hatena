@@ -12,5 +12,3 @@ local.properties
 .project
 .settings/
 
-# ignore module
-modules/

@@ -1,3 +1,6 @@
 [submodule "Hatena_Android/modules/volley"]
 	path = Hatena_Android/modules/volley
 	url = https://android.googlesource.com/platform/frameworks/volley
+[submodule "Hatena_Android/modules/jsoup"]
+	path = Hatena_Android/modules/jsoup
+	url = https://github.com/jhy/jsoup.git
