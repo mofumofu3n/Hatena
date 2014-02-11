@@ -54,6 +54,7 @@ public class ContentsFragment extends Fragment {
 		mQueue = Volley.newRequestQueue(activity);
 		mQueue.add(mRequest);
 	}
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);

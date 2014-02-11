@@ -34,15 +34,14 @@ public class ContentsAdapter extends ArrayAdapter<Entry> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
-		Log.d(TAG, "getView");
 
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.contents_item, parent,
 					false);
 
 			holder = new ViewHolder();
-			holder.title = (TextView) convertView.findViewById(R.id.body);
-			holder.image = (ImageView) convertView.findViewById(R.id.image);
+			holder.title = (TextView) convertView.findViewById(R.id.entry_title);
+			holder.image = (ImageView) convertView.findViewById(R.id.entry_image);
 
 			convertView.setTag(holder);
 		} else {
@@ -50,20 +49,16 @@ public class ContentsAdapter extends ArrayAdapter<Entry> {
 		}
 
 		Entry entry = getItem(position);
-		if (entry == null) {
-			return convertView;
-		}
-
-		Log.d(TAG, "Title : " + entry.title);
-		String image = entry.image;
 		holder.title.setText(entry.title);
 
-		ImageListener listener = ImageLoader.getImageListener(holder.image,
-				android.R.drawable.spinner_background /* 表示待ち時の画像 */,
-				android.R.drawable.ic_dialog_alert /* エラー時の画像 */);
-
-		if (image != null) {
-			mImageLoader.get(image, listener); /* URLから画像を取得する */
+		if (entry.image != null) {
+			holder.image.setVisibility(View.VISIBLE);
+			ImageListener listener = ImageLoader.getImageListener(holder.image,
+					R.drawable.no_image /* 表示待ち時の画像 */,
+					android.R.drawable.ic_dialog_alert /* エラー時の画像 */);
+			mImageLoader.get(entry.image, listener); /* URLから画像を取得する */
+		} else {
+			holder.image.setVisibility(View.GONE);
 		}
 		return convertView;
 	}

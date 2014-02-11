@@ -55,10 +55,8 @@ public class RssParser {
 	/**
 	 * エントリーのプロパティをパース
 	 * 
-	 * @param parser
-	 *            1エントリー
-	 * 
-	 *            {@link RssParser#parse(InputStream)}
+	 * @param parser 1エントリー
+	 * {@link RssParser#parse(InputStream)}
 	 * @return
 	 */
 	private static Entry parseItem(XmlPullParser parser) {
