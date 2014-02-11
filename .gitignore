@@ -11,3 +11,6 @@ local.properties
 .classpath
 .project
 .settings/
+
+# ignore module
+modules/
