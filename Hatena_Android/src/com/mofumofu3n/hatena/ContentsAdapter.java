@@ -2,11 +2,13 @@ package com.mofumofu3n.hatena;
 
 import java.util.ArrayList;
 
+import android.R.integer;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,9 +20,9 @@ import com.mofumofu3n.hatena.model.Entry;
 
 public class ContentsAdapter extends ArrayAdapter<Entry> {
 	private static String TAG = ContentsAdapter.class.getSimpleName();
-	// private RequestQueue mQueue;
 	private ImageLoader mImageLoader;
 	private LayoutInflater mInflater;
+	private ArrayList<Integer> mAnimatedPosition = new ArrayList<Integer>();
 
 	public ContentsAdapter(Context context, ArrayList<Entry> objects,
 			RequestQueue queue) {
@@ -68,6 +70,14 @@ public class ContentsAdapter extends ArrayAdapter<Entry> {
 		} else {
 			holder.image.setVisibility(View.GONE);
 		}
+
+		if (!mAnimatedPosition.contains(position)) {
+			Animation anim = AnimationUtils.loadAnimation(getContext(), R.anim.item_motion);
+			convertView.startAnimation(anim);
+			anim = null;
+			mAnimatedPosition.add(position);
+		}
+
 		return convertView;
 	}
 

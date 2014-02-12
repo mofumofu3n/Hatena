@@ -68,6 +68,7 @@ public class ContentsFragment extends Fragment {
 		mContentListView = (ListView) getView().findViewById(R.id.content_list);
 		mContentListView.setAdapter(mAdapter);
 		mContentListView.setOnItemClickListener(mItemClick);
+		mContentListView.setDivider(null);
 
 		mProgress = (ProgressBar) getView().findViewById(R.id.empty_view);
 		mProgress.setVisibility(View.VISIBLE);
